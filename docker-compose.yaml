@@ -3,7 +3,14 @@ version: "3.7"
 services:
 
   ld-darkside-1:
-    image: codydearkland/ld-darkside-1:beta
+    build:
+      context: ./ld-darkside-frontend
+      dockerfile: ./Dockerfile
+    ####################################################################
+    # This field needs to be updated to reflect the demo station you are
+    # It should be either ld-darkside-1:1 or ld-darkside-1:2
+    image: codydearkland/ld-darkside-1:1
+    ####################################################################
     depends_on:
       - api-1
       - api-2
@@ -13,6 +20,9 @@ services:
       - demo-network
 
   api-1:
+    build:
+        context: ./ld-api-s1
+        dockerfile: ./Dockerfile
     image: codydearkland/ld-darkside-api:1
     # depends_on:
     #   - db
@@ -22,6 +32,9 @@ services:
       - demo-network
 
   api-2:
+    build:
+        context: ./ld-api-s2
+        dockerfile: ./Dockerfile
     image: codydearkland/ld-darkside-api:2
     # depends_on:
     #   - db
