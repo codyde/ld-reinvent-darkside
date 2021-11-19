@@ -150,11 +150,11 @@ export default function Info() {
         </div>
       ) : (
         <div style={styles.fadeup}>
-          <div className="grid text-center items-center justify-center bg-gray-900 bg-opacity-80 rounded-3xl px-9">
+          <div className="grid text-center items-center justify-center bg-gray-900 rounded-3xl px-9">
             <div className="mx-auto text-aws text-5xl font-bolt text-center italic py-10">
               A long time ago, at a re:Invent far, far, away... 
             </div>
-            <img className="mx-auto" src="./ld-white.png" alt="launch-darkly" />
+            <img className="mx-auto py-6 " src="./ld-white.png" alt="launch-darkly" />
           </div>
           <div></div>
         </div>
