@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+
+  ld-darkside-1:
+    image: codydearkland/ld-darkside-1:beta
+    depends_on:
+      - api-1
+      - api-2
+    ports:
+      - 3000:3000
+    networks:
+      - demo-network
+
+  api-1:
+    image: codydearkland/ld-darkside-api:1
+    # depends_on:
+    #   - db
+    ports:
+      - 5010:5010
+    networks:
+      - demo-network
+
+  api-2:
+    image: codydearkland/ld-darkside-api:2
+    # depends_on:
+    #   - db
+    ports:
+      - 5020:5020
+    networks:
+      - demo-network      
+
+  # db:
+  #   image: codydearkland/ld-darkside-db:latest
+  #   networks:
+  #     - demo-network
+
+
+networks:
+  demo-network:
+    driver: bridge
