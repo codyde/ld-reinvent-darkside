@@ -98,47 +98,22 @@ export default function Loginbox() {
 
   return (
     <StyleRoot>
-        <div className={`bg-red-800 w-full rounded-2xl p-4 shadow-2xl`}>
+        <div className={`flex bg-ldred justify-center items-center h-full shadow-2xl`}>
           <form>
-            <h1 className="text-center font-bold text-white text-4xl">
+            <h1 className="grid text-center font-bold text-white text-4xl">
               Identity secured, {userState.key}
             </h1>
-            {/* <p className="mx-auto font-normal invisible md:visible text-white my-6 max-w-lg">
-              This login field will create a user object with the LaunchDarkly
-              SDK. This user object can be used to interact with targeting rules
-              allowing specific feature configurations to be enabled or disabled
-              based on users.
-            </p> */}
-            {/* <div className="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
-              <input
-                className="text-base text-gray-400 flex-grow outline-none px-2 "
-                type="input"
-                id="username"
-                placeholder="Enter Username"
-                value={userState.username}
-                onChange={handleChange}
-              />
-              <div className="flex items-center px-2 rounded-lg space-x-4 mx-auto ">
-                <button
-                  type="submit"
-                  className="bg-green-500 text-white text-base rounded-lg px-4 py-2 font-thin"
-                  onClick={submitUser.bind(userState)}
-                >
-                  Submit
-                </button>
-              </div>
-            </div> */}
-            <div className="flex mx-auto align-middle justify-center py-2 px-4 space-x-4">
+            <div className="flex mx-auto m-auto align-middle justify-center py-2 px-4 space-x-4">
               <button
                 type="input"
-                className="bg-purple-500 text-white text-base rounded-lg px-2 py-2 "
+                className="bg-ldblue text-white text-base px-2 py-2 "
                 onClick={getUser.bind(userState)}
               >
                 Get Current User
               </button>
               <button
                 type="input"
-                className="bg-yellow-500 text-white text-base rounded-lg px-2 py-2"
+                className="bg-ldblue text-white text-base px-2 py-2"
                 onClick={submitLogout.bind(userState)}
               >
                 Clear Current User

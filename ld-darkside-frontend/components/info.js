@@ -112,21 +112,21 @@ export default function Info() {
   return (
     <StyleRoot>
       {userLogin ? (
-        <div className="flex justify-center items-center py-4 px-8">
+        <div className="flex justify-center items-center">
           <div
-            className={`${loginBoxColor} w-full rounded-2xl p-10 shadow-2xl`}
+            className={`bg-ldgray w-full p-10 px-28 shadow-2xl`}
           >
             <form>
-              <h1 className="text-center font-bold text-white text-4xl">
+              <h1 className="text-center font-bold text-ldgraytext text-4xl">
                 Login With Your Username
               </h1>
-              <p className="mx-auto font-normal text-white my-6 max-w-lg">
+              <p className="mx-auto font-normal text-ldgraytext my-6 max-w-lg">
                 This login field will create a user object with the LaunchDarkly
                 SDK. This user object can be used to interact with targeting
                 rules allowing specific feature configurations to be enabled or
                 disabled based on users.
               </p>
-              <div className="flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
+              <div className="flex items-center bg-white overflow-hidden px-2 py-1 justify-between">
                 <input
                   className="text-base text-gray-400 flex-grow outline-none px-2 "
                   type="input"
@@ -135,10 +135,10 @@ export default function Info() {
                   value={userState.username}
                   onChange={handleChange}
                 />
-                <div className="flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+                <div className="flex items-center px-2 space-x-4 mx-auto ">
                   <button
                     type="submit"
-                    className="bg-green-500 text-white text-base rounded-lg px-4 py-2 font-thin"
+                    className="bg-ldblue text-white text-base px-4 py-2 font-thin"
                     onClick={submitUser.bind(userState)}
                   >
                     Submit
@@ -150,14 +150,14 @@ export default function Info() {
         </div>
       ) : (
         <div style={styles.fadeup}>
-          <div className="grid text-center items-center justify-center bg-gray-900 rounded-3xl px-9">
-            <div className="mx-auto text-aws text-5xl font-bolt text-center italic py-10">
+          <div className="grid mx-auto justify-center h-1/3 items-middle shadow-2xl bg-ldgray px-28 py-28">
+          <img className="mx-auto h-full" src="./ld-white-wide.png" width="550" alt="launch-darkly" />
+            <div className="mx-auto py-8 h-full text-3xl text-transparent bg-clip-text bg-gradient-to-br from-ldyellow to-lddblue text-center italic">
               A long time ago, at a re:Invent far, far, away... 
             </div>
-            <img className="mx-auto py-6 " src="./ld-white.png" alt="launch-darkly" />
+          {/* </div> */}
           </div>
-          <div></div>
-        </div>
+          </div>
       )}
     </StyleRoot>
   );

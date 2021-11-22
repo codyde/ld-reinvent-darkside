@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: darkside
+  namespace: darkside
+  annotations: 
+    kuma.io/sidecar-injection: enabled
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demoapp-config
+  namespace: darkside
+data:
+  fernet: TqwnupPqap-UCpNCR70KADvdtVnW0fhcFlni8muk9sQ=
+  secret_key: hkBxrbZ9Td4QEwgRewV6gZSVH4q78vBia4GBYuqd09SsiMsIjH
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ld-darkside-1
+  namespace: darkside
+  labels:
+    app: ld-darkside-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ld-darkside-1
+  template:
+    metadata:
+      annotations:
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "5670"
+      labels:
+        app: ld-darkside-1
+    spec:
+      containers:
+        - name: ld-darkside-1
+          image: codydearkland/ld-darkside-1:beta
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 3000
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ld-darkside-1
+  namespace: darkside
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: ld-darkside-1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: darkside
+  name: ld-lb
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: ld-darkside-1
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-1
+  namespace: darkside
+  labels:
+    app: api-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-1
+  template:
+    metadata:
+      annotations:
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "5670"
+      labels:
+        app: api-1
+    spec:
+      containers:
+        - name: api-1
+          image: codydearkland/ld-darkside-api:1
+          envFrom:
+            - configMapRef:
+                name: demoapp-config
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5010
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-1
+  namespace: darkside
+spec:
+  selector:
+    app: api-1
+  ports:
+    - protocol: TCP
+      port: 5010
+      targetPort: 5010
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-2
+  namespace: darkside
+  labels:
+    app: api-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-2
+  template:
+    metadata:
+      labels:
+        app: api-2
+    spec:
+      containers:
+        - name: api-2
+          image: codydearkland/ld-darkside-api:2
+          envFrom:
+            - configMapRef:
+                name: demoapp-config
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5020
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-2
+  namespace: darkside
+spec:
+  selector:
+    app: api-2
+  ports:
+    - protocol: TCP
+      port: 5020
+      targetPort: 5020

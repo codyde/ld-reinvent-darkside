@@ -36,9 +36,10 @@ export default function Home() {
           // Default options for specific types
           success: {
             icon: "🚀",
+            // className:"bg-ldgray",
             style: {
               fontSize: 22,
-              background: "green",
+              background: "#282828",
               color: "white",
             },
           },
@@ -46,7 +47,7 @@ export default function Home() {
             icon: "⚠️",
             style: {
               fontSize: 22,
-              background: "orange",
+              background: "#FF386B",
               color: "white",
             },
           },
@@ -54,22 +55,22 @@ export default function Home() {
       />
 
       {uiEnable ? (
-        <main className="grid grid-cols-4 bg-gray-800 md:bg-ld-space md:bg-cover">
-          <div className="grid col-start-1 justify-center items-center bg-gray-900 px-8">
+        <main className="grid grid-cols-4 bg-ldgray">
+          <div className="grid col-start-1 justify-center items-center px-8">
             <Nav />
           </div>
-          <div className="grid col-start-2 col-span-3">
+          <div className="grid col-start-2 col-span-3 bg-ld-ls bg-center">
             <div className="grid grid-rows-3 h-screen">
               {toggle ? (
                 <div className="grid col-span-4 row-start-1 justify-center items-center">
-                  <img className="py-5" src="./toggle_thumbsup.png" width="200"  alt="launch-darkly" />
+                  <img className="py-5" src="./toggle_thumbsup.png" width="150"  alt="launch-darkly" />
                 </div>
               ) : (
                 <div className="grid col-span-4 row-start-1 justify-center items-center">
-                  <img src="./ld-white.png" width="250" alt="launch-darkly" />
+                  <img src="./ld-white-wide.png" width="550" alt="launch-darkly" />
                 </div>
               )}
-              <div className="grid col-span-4 m-auto mx-auto row-start-2 w-3/4 py-4 p-5">
+              <div className="grid col-span-4 h-2/3 m-auto mx-auto row-start-2 w-full py-4 p-12">
                 {apiConfig ?
                   <Connection />
                   :
@@ -83,9 +84,9 @@ export default function Home() {
           </div>
         </main>
       ) : (
-        <main className="bg-gray-800 md:bg-ld-space md:bg-cover ">
+        <main className="">
           <div className="grid grid-cols-4 h-screen">
-            <div className="grid bg-gray-900 text-white col-start-1 justify-center items-center px-8">
+            <div className="grid bg-ldgray text-white col-start-1 justify-center items-center px-8">
               {userLogin ? (
                 <div>
                   <Nav />
@@ -94,7 +95,7 @@ export default function Home() {
                 <Intro />
               )}
             </div>
-            <div className="grid col-start-2 w-full col-span-3 justify-center items-center">
+            <div className="flex h-screen bg-ld-ls bg-no-repeat bg-center bg-cover col-start-2 col-span-3 justify-center items-center">
               <Info />
             </div>
           </div>
