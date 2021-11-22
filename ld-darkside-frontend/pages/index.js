@@ -59,7 +59,7 @@ export default function Home() {
           <div className="grid col-start-1 justify-center items-center px-8">
             <Nav />
           </div>
-          <div className="grid col-start-2 col-span-3 bg-ld-ls bg-center">
+          <div className="grid col-start-2 col-span-3 bg-ld-ls bg-no-repeat bg-center bg-cover">
             <div className="grid grid-rows-3 h-screen">
               {toggle ? (
                 <div className="grid col-span-4 row-start-1 justify-center items-center">
