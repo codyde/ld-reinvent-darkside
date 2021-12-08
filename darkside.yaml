@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: ld-darkside-1
-          image: codydearkland/ld-darkside-1:beta
+          image: codydearkland/ld-darkside-1:1
           imagePullPolicy: Always
           ports:
             - name: web

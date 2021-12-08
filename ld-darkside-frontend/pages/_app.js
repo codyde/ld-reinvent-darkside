@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
 
 export default withLDProvider({
   // TODO: Sercret storage? Vault?
-  clientSideID: process.env.NEXT_PUBLIC_LD_CLIENT_KEY,
+  clientSideID: '6195a8005b2be8144fea2ff9',
   // user: {
   //   key: "default",
   // },

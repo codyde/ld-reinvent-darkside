@@ -43,7 +43,7 @@ export default function Info() {
   // TODO: Create a form that allows submission of a user object
   // Long TODO: Refactor mesh demo apps login/db engine to support this
   // const user = {
-  //   key: "codydearkland@gmail.com",
+  //   key: "UUID64",
   //   email: "codydearkland@gmail.com",
   //   firstName: "Cody",
   //   lastName: "De Arkland",
