@@ -11,6 +11,5 @@ jobs:
       - name: LaunchDarkly Code References
         uses: launchdarkly/find-code-references@v13
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
           accessToken: ${{ secrets.CODE }}
           projKey: reinvent-demo-1
